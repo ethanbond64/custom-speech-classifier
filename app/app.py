@@ -22,7 +22,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets,show_undo_re
 
 header = html.Div(style={'backgroundColor': colors['banner'], 'font-family': 'Century Gothic', 'height':'175px' }, children=[
     html.H1(
-        children = 'Syntax PR Co.',
+        children = 'Speech Classifier',
         style = {
             'font-size': '65px',
             'textAlign': 'center',
@@ -30,7 +30,7 @@ header = html.Div(style={'backgroundColor': colors['banner'], 'font-family': 'Ce
         }
     ),
     html.Div(
-        children = 'Examine Your Speechwriting',
+        children = 'Determine is a written speech is a strong political speech',
         style = {
             'font-size': '35px',
             'textAlign': 'center',
@@ -213,8 +213,8 @@ def update_output(n_clicks, value):
         print(dataForML)
         score = clf.predict([dataForML])
 
-        goodMessage = "This Speech is Ready!"
-        badMessage = "This Speech is Not Ready Yet"
+        goodMessage = "This is a (strong) Political Speech"
+        badMessage = "This is not a (strong) Political Speech"
 
         if score[0] == 1:
             return goodMessage, value
